@@ -1,7 +1,7 @@
 import TextController from './components/TextController';
 
 import TextControllerStore from './store/TextControllerStore';
-import './App.css';
+import './App.scss';
 
 const firstTextCtrStore = new TextControllerStore('', [
   {

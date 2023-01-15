@@ -1,0 +1,36 @@
+body {
+  padding: 20px;
+}
+
+input, button {
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 10px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+input {
+  border: 1px #000 solid;
+}
+
+button {
+  border: none;
+  color: #fff;
+  background-color: #55f;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #00f;
+  }
+
+  &:active {
+    background-color: #009;
+  }
+}
