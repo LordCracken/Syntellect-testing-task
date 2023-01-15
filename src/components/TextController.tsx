@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import Button from './Button';
 import { ITextController } from '../interfaces';
+import classes from './TextController.module.scss';
 
 const TextController = observer(({ store }: { store: ITextController }) => {
   const { content, leftButtons, rightButtons, changeContent } = store;
@@ -12,7 +13,7 @@ const TextController = observer(({ store }: { store: ITextController }) => {
   };
 
   return (
-    <>
+    <div className={classes.textController}>
       {leftButtons.map(btn => (
         <Button key={btn.id} configs={btn} />
       ))}
@@ -20,7 +21,7 @@ const TextController = observer(({ store }: { store: ITextController }) => {
       {rightButtons.map(btn => (
         <Button key={btn.id} configs={btn} />
       ))}
-    </>
+    </div>
   );
 });
 
