@@ -1,15 +1,7 @@
-import { IHint } from '../../interfaces';
+import { IHintListItem } from '../../interfaces';
 import classes from './HintListItem.module.scss';
 
-const HintListItem = ({
-  hint,
-  onChange,
-  onSelect,
-}: {
-  hint: IHint;
-  onChange: (newValue: string) => void;
-  onSelect: (value: boolean) => void;
-}) => {
+const HintListItem = ({ hint, onChange, onSelect }: IHintListItem) => {
   const { name, fullName, flag } = hint;
 
   const setValueHandler = (pickedValue: string) => {

@@ -1,13 +1,13 @@
-import { ChangeEvent, useRef } from 'react';
-import { observer } from 'mobx-react-lite';
+import { useRef } from 'react';
 
 import HintsList from './HintsList';
+import AutocompleteInput from './AutocompleteInput';
 import useClickOut from '../../hooks/useClickOut';
 
 import { IAutocompleteCtrComponent } from '../../interfaces';
 import classes from './AutocompleteController.module.scss';
 
-const AutocompleteController = observer(({ store }: { store: IAutocompleteCtrComponent }) => {
+const AutocompleteController = ({ store }: { store: IAutocompleteCtrComponent }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLUListElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,20 +18,12 @@ const AutocompleteController = observer(({ store }: { store: IAutocompleteCtrCom
     setIsTouched(value);
   };
 
-  const changeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const eventValue = event.target.value;
-
-    changeContent(eventValue);
-    getHintsList(eventValue);
-  };
-
   return (
     <div ref={dropdownRef} className={classes.autocompleteController}>
-      <input ref={inputRef} value={content} onChange={changeInputHandler} onFocus={focusHandler} />
-      {isTouched && <HintsList ref={optionsRef} store={store} />}
+      <AutocompleteInput ref={inputRef} onTouch={touchHandler} store={store} />
+      {isTouched && <HintsList ref={optionsRef} store={store} onTouch={touchHandler} />}
     </div>
   );
-});
+};
 
-AutocompleteController.displayName = 'AutocompleteController';
 export default AutocompleteController;

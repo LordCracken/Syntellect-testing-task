@@ -8,30 +8,39 @@ export interface IButton {
   configs: Omit<IButtonConfigs, 'id'>;
 }
 
-export interface ITextController {
+interface IContentControl {
   content: string;
+  changeContent: (newValue: string) => void;
+}
+
+export interface ITextController extends IContentControl {
   rightButtons: IButtonConfigs[];
   leftButtons: IButtonConfigs[];
-  changeContent: (newValue: string) => void;
 }
 
 export type IHint = Record<'name' | 'fullName' | 'flag', string>;
 
-export interface IAutocompleteController {
-  content: string;
+export interface IAutocompleteController extends IContentControl {
   hintsList: IHint[];
   maxHints: number;
   isLoading: boolean;
-  isTouched: boolean;
   getHintsList: (country: string) => void;
-  setIsTouched: (value: boolean) => void;
-  changeContent: (newValue: string) => void;
+}
+
+export interface IAutocompleteInput {
+  store: Pick<IAutocompleteController, 'content' | 'getHintsList' | 'changeContent'>;
+  onTouch: (value: boolean) => void;
 }
 
 export type IAutocompleteCtrComponent = Omit<IAutocompleteController, 'maxHints'>;
 
 export interface IHintsList {
-  list: IHint[];
-  isLoading: boolean;
-  hasValue: boolean;
+  store: IAutocompleteCtrComponent;
+  onTouch: (value: boolean) => void;
+}
+
+export interface IHintListItem {
+  hint: IHint;
+  onChange: (newValue: string) => void;
+  onSelect: (value: boolean) => void;
 }
