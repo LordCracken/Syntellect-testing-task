@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import { IButtonConfigs, ITextController } from '../interfaces';
 
 class TextControllerStore implements ITextController {
@@ -13,9 +13,6 @@ class TextControllerStore implements ITextController {
   ) {
     makeObservable(this, {
       content: observable,
-      rightButtons: observable,
-      leftButtons: observable,
-      changeContent: action,
     });
     this.content = content;
     this.rightButtons = rightButtons;

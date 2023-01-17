@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import Button from './Button';
-import { ITextController } from '../interfaces';
+import Button from '../Button';
+import { ITextController } from '../../interfaces';
 import classes from './TextController.module.scss';
 
 const TextController = observer(({ store }: { store: ITextController }) => {
