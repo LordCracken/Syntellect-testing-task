@@ -52,8 +52,12 @@ const secondTextCtrStore = new TextControllerStore(
 const App = () => {
   return (
     <div>
+      <h2>Контрол с кнопками</h2>
       <TextController store={firstTextCtrStore} />
       <TextController store={secondTextCtrStore} />
+      <h2>Контрол-автокомплит</h2>
+      <AutocompleteController store={firstAutocompleteCtrStore} />
+      <AutocompleteController store={secondAutocompleteCtrStore} />
     </div>
   );
 };
