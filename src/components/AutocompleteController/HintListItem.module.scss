@@ -1,0 +1,17 @@
+.hintListItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background-color: #007;
+    color: #fff;
+  }
+
+  img {
+    display: inline-block;
+    margin-right: 15px;
+    box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+  }
+}

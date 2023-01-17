@@ -1,0 +1,14 @@
+.autocompleteController {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  input {
+    width: 100%;
+  }
+}
