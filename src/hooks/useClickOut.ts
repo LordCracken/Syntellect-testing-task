@@ -1,14 +1,14 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useState, useEffect } from 'react';
 
 type IUseClickOut = (
   dropdownRef: RefObject<HTMLDivElement>,
   inputRef: RefObject<HTMLInputElement>,
   optionsRef: RefObject<HTMLUListElement>,
-  isTouched: boolean,
-  setIsTouched: (value: boolean) => void,
-) => void;
+) => [isTouched: boolean, setIsTouched: (value: boolean) => void];
 
-const useClickOut: IUseClickOut = (dropdownRef, inputRef, optionsRef, isTouched, setIsTouched) => {
+const useClickOut: IUseClickOut = (dropdownRef, inputRef, optionsRef) => {
+  const [isTouched, setIsTouched] = useState<boolean>(false);
+
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -29,6 +29,8 @@ const useClickOut: IUseClickOut = (dropdownRef, inputRef, optionsRef, isTouched,
       inputRef.current!.blur();
     }
   }, [isTouched]);
+
+  return [isTouched, setIsTouched];
 };
 
 export default useClickOut;

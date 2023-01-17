@@ -8,14 +8,12 @@ class AutocompleteControllerStore implements IAutocompleteController {
   hintsList: IHint[] = [];
   maxHints: number;
   isLoading = false;
-  isTouched = false;
 
   constructor(maxHints = 3) {
     makeObservable(this, {
       content: observable,
       hintsList: observable,
       isLoading: observable,
-      isTouched: observable,
     });
     this.maxHints = maxHints;
   }
@@ -35,10 +33,6 @@ class AutocompleteControllerStore implements IAutocompleteController {
     this.hintsList = this.hintsList.slice(0, this.maxHints);
 
     this.isLoading = false;
-  };
-
-  setIsTouched = (value: boolean) => {
-    this.isTouched = value;
   };
 
   changeContent = (newValue: string) => {

@@ -12,12 +12,10 @@ const AutocompleteController = observer(({ store }: { store: IAutocompleteCtrCom
   const optionsRef = useRef<HTMLUListElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { content, isTouched, getHintsList, changeContent, setIsTouched } = store;
+  const [isTouched, setIsTouched] = useClickOut(dropdownRef, inputRef, optionsRef);
 
-  useClickOut(dropdownRef, inputRef, optionsRef, isTouched, setIsTouched);
-
-  const focusHandler = () => {
-    setIsTouched(true);
+  const touchHandler = (value: boolean) => {
+    setIsTouched(value);
   };
 
   const changeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
