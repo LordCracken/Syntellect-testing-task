@@ -1,6 +1,8 @@
-import TextController from './components/TextController';
+import TextController from './components/TextController/TextController';
+import AutocompleteController from './components/AutocompleteController/AutocompleteController';
 
 import TextControllerStore from './store/TextControllerStore';
+import AutocompleteControllerStore from './store/AutocompleteControllerStore';
 import './App.scss';
 
 const firstTextCtrStore = new TextControllerStore('', [
@@ -48,6 +50,9 @@ const secondTextCtrStore = new TextControllerStore(
     },
   ],
 );
+
+const firstAutocompleteCtrStore = new AutocompleteControllerStore();
+const secondAutocompleteCtrStore = new AutocompleteControllerStore(10);
 
 const App = () => {
   return (
